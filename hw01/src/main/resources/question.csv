@@ -1,0 +1,6 @@
+# Добавить сюда своих вопросов. Эту строку надо пропустить при настройке CsvToBean (withSkipLines)
+Which method compares the contents of two strings in Java?;equals()%true|== operator%false|compareReferences()%false
+Which collection does not allow duplicate elements?;ArrayList%false|HashSet%true|LinkedList%false
+Which keyword is used to inherit from a class in Java?;implements%false|extends%true|inherits%false
+Which statement automatically closes resources that implement AutoCloseable?;try-with-resources%true|try-catch without finally%false|synchronized%false
+Which exception must be caught or declared in a method's throws clause?;IOException%true|NullPointerException%false|IllegalArgumentException%false

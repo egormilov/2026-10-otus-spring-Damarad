@@ -10,6 +10,7 @@ import ru.otus.hw.exceptions.QuestionReadException;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,8 +26,9 @@ public class CsvQuestionDao implements QuestionDao {
                 throw new QuestionReadException("Reading error");
             }
 
-            CsvToBean<QuestionDto> csvToBean = new CsvToBeanBuilder<QuestionDto>(new InputStreamReader(inputStream))
-                    .withSkipLines(1)
+            CsvToBean<QuestionDto> csvToBean = new CsvToBeanBuilder<QuestionDto>(
+                    new InputStreamReader(inputStream, StandardCharsets.UTF_8)
+            ).withSkipLines(1)
                     .withSeparator(';')
                     .withType(QuestionDto.class)
                     .build();

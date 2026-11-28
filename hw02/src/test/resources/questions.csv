@@ -1,0 +1,3 @@
+# Добавить сюда своих вопросов. Эту строку надо пропустить при настройке CsvToBean (withSkipLines)
+Which method compares the contents of two strings in Java?;equals()%true|== operator%false|compareReferences()%false
+Which collection does not allow duplicate elements?;ArrayList%false|HashSet%true|LinkedList%false

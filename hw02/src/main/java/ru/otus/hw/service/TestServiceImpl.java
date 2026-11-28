@@ -37,19 +37,28 @@ public class TestServiceImpl implements TestService {
         printQuestion(question);
 
         List<Answer> answers = question.answers();
-        String input = ioService.readString();
 
-        return answers.stream()
-                .filter(answer -> answer.text().equals(input))
-                .map(Answer::isCorrect)
-                .findFirst().orElse(false);
+        int inputNumber = ioService.readIntForRangeWithPrompt(
+                1,
+                answers.size(),
+                "Enter the answer number:",
+                "Please enter a number from 1 to " + answers.size()
+        );
+
+        return answers.get(inputNumber - 1).isCorrect();
     }
 
     private void printQuestion(Question question) {
         ioService.printLine(question.text());
 
-        question.answers().stream()
-                .map(Answer::text)
-                .forEach(ioService::printLine);
+        List<Answer> answers = question.answers();
+
+        for (int i = 0; i < answers.size(); i++) {
+            ioService.printFormattedLine(
+                    "%d. %s",
+                    i + 1,
+                    answers.get(i).text()
+            );
+        }
     }
 }

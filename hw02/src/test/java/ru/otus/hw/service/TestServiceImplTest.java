@@ -13,6 +13,8 @@ import ru.otus.hw.domain.Student;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -37,8 +39,12 @@ public class TestServiceImplTest {
         when(questionDao.findAll())
                 .thenReturn(List.of(question));
 
-        when(ioService.readString())
-                .thenReturn("4");
+        when(ioService.readIntForRangeWithPrompt(
+                eq(1),
+                eq(2),
+                anyString(),
+                anyString()
+        )).thenReturn(2);
 
         var result = service.executeTestFor(student);
 
@@ -56,8 +62,12 @@ public class TestServiceImplTest {
         when(questionDao.findAll())
                 .thenReturn(List.of(question));
 
-        when(ioService.readString())
-                .thenReturn("3");
+        when(ioService.readIntForRangeWithPrompt(
+                eq(1),
+                eq(2),
+                anyString(),
+                anyString()
+        )).thenReturn(1);
 
         var result = service.executeTestFor(student);
 
